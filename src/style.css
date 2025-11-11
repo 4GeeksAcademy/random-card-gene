@@ -9,48 +9,59 @@ body{
       font-family: sans-serif;
 }
 
+.hand {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 15px;
+    }
+
 .card {
     width: 500px;
       height: 600px;
       border: 2px solid black;
       border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 2rem;
-      margin: 20px;
-      padding: 10px;
-      justify-self: anchor-center;
       position: relative;
+      background: white;
 }
 
-.numero {
-      font-size: 8rem;
-      font-weight: bold;
+.corner {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .palo-top {
       font-size: 6rem;
-      position: absolute;
+      font-weight: bold;
+    }
+    .top-left {
       top: 5px;
       left: 5px;
       margin-left: 20px;
     }
-
-    .palo-bottom {
-      position: absolute;
+    .bottom-right {
       bottom: 5px;
       right: 5px;
-      font-size: 6rem;
-      transform: rotate(180deg); 
+      transform: rotate(180deg);
       margin-right: 20px;
     }
+    .center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      gap: 15px;
+      font-size: 3rem;
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      margin: 5px;
+    }
     
+.column.center-col {
+      justify-content: center;
+    }
+
     .button {
       margin-top: 15px;
       padding: 8px 12px;
