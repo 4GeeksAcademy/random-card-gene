@@ -6,21 +6,16 @@ import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
 
+const palos = ["♦", "♥", "♠", "♣"];
+const num = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"];
+const btn = document.createElement("button");
+btn.textContent = "Nueva partida";
 
-const palos = ["♦", "♥", "♠", "♣"]
-const num = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"]
-const btnNew = document.createElement("button");
-btnNew.textContent = "Nueva carta";
-const btnStop = document.createElement("button");
-btnStop.textContent = "Parar";
-
-const controls = document.createElement("div");
-controls.classList.add("controls");
-controls.appendChild(btnNew);
-controls.appendChild(btnStop);
-
-const randomValue = arr => arr[Math.floor(Math.random() * arr.length)]
-const randomColor = () => Math.random() > 0.5 ? "red" : "black";
+const randomValue = arr => arr[Math.floor(Math.random() * arr.length)];
+const getColor = (palo) => {
+  if (palo === "♥" || palo === "♦") return "red";
+  return "black"; // ♠ y ♣
+};
 
 const makeColumn = (palo, n, isCenter = false) => {
   const col = document.createElement("div");
@@ -37,7 +32,7 @@ const makeColumn = (palo, n, isCenter = false) => {
 const createCard = () => {
   const palo = randomValue(palos);
   const numero = randomValue(num);
-  const color = randomColor();
+  const color = getColor(palo);
 
   const card = document.createElement("div");
   card.classList.add("card");
@@ -90,34 +85,37 @@ const createCard = () => {
   return card;
 };
 
-let hand;
-    let stopped = false;
+let leftCard, rightCard;
 
-    const render = () => {
-      document.querySelectorAll(".hand").forEach(el => el.remove());
+const render = () => {
+  document.querySelectorAll(".hand").forEach(el => el.remove());
 
-      hand = document.createElement("div");
-      hand.classList.add("hand");
+  const hand = document.createElement("div");
+  hand.classList.add("hand");
+
+  leftCard = createCard();
+  hand.appendChild(leftCard);
+
+  rightCard = createCard();
+  hand.appendChild(rightCard);
+  document.body.insertBefore(hand, btn);
 
 
-      hand.appendChild(createCard());
-      hand.appendChild(createCard());
-
-      document.body.insertBefore(hand, controls);
-    };
+  setTimeout(() => {
+    const overlay = createCard();
+    overlay.style.position = "absolute";
+    overlay.style.top = "0";
+    overlay.style.left = "0";
+    overlay.style.zIndex = "10";
+    rightCard.appendChild(overlay);
+  }, 1000); 
+};
 
 window.onload = function () {
-  document.body.appendChild(controls);
+  document.body.appendChild(btn);
   render();
 
-  btnNew.addEventListener("click", () => {
-        if (!stopped) {
-          hand.insertBefore(createCard(), hand.lastChild);
-        }
-      });
-
-      btnStop.addEventListener("click", () => {
-        stopped = true;
-        btnNew.disabled = true;
-      });
-    };
+  btn.addEventListener("click", () => {
+    render();
+  });
+}

@@ -1,73 +1,74 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 
-body{
-    background: green;
-    display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 30px;
-      font-family: sans-serif;
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  font-family: sans-serif;
+  background-color: green;
 }
 
 .hand {
-      display: flex;
-      gap: 20px;
-      margin-bottom: 15px;
-    }
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+}
 
 .card {
-    width: 500px;
-      height: 600px;
-      border: 2px solid black;
-      border-radius: 10px;
-      position: relative;
-      background: white;
+  width: 500px;
+  height: 600px;
+  border: 2px solid black;
+  border-radius: 10px;
+  position: relative;
+  background: white;
 }
 
 .corner {
-      position: absolute;
-      font-size: 6rem;
-      font-weight: bold;
-    }
-    .top-left {
-      top: 5px;
-      left: 5px;
-      margin-left: 20px;
-    }
-    .bottom-right {
-      bottom: 5px;
-      right: 5px;
-      transform: rotate(180deg);
-      margin-right: 20px;
-    }
-    .center {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: flex;
-      gap: 15px;
-      font-size: 3rem;
-    }
+  position: absolute;
+  font-size: 6rem;
+  font-weight: bold;
+}
 
-    .column {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
-      margin: 5px;
-    }
-    
+.top-left {
+  top: 5px;
+  left: 5px;
+  margin-left: 15px;
+}
+
+.bottom-right {
+  bottom: 5px;
+  right: 5px;
+  transform: rotate(180deg);
+  margin-right: 15px;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 10px;
+  font-size: 3rem;
+
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  flex: 1;
+}
+
 .column.center-col {
-      justify-content: center;
-    }
+  justify-content: center;
+}
 
-    .button {
-      margin-top: 15px;
-      padding: 8px 12px;
-      border-radius: 5px;
-      border: 1px solid #333;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-    }
+.button {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  cursor: pointer;
+}
