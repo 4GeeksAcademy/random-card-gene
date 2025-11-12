@@ -13,14 +13,17 @@ const btn = document.createElement("button");
 btn.textContent = "Nueva carta";
 
 const randomValue = arr => arr[Math.floor(Math.random()*arr.length)]
- const randomColor = () => Math.random() > 0.5 ? "red" : "black";
+const getColor = (palo) => {
+      if (palo === "♥" || palo === "♦") return "red";
+      return "black"; // ♠ y ♣
+    };
 
 const render = () => {
       document.querySelectorAll(".card").forEach(el => el.remove());
 
       const palo = randomValue(palos);
       const numero = randomValue(num);
-      const color = randomColor();
+      const color = getColor(palo);
 
       const card = document.createElement("div");
       card.classList.add("card");
